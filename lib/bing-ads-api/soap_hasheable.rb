@@ -128,10 +128,17 @@ module BingAdsApi
 		#
 		# Returns:: String with the attribute name for the key in the hash
 		def get_attribute_key(attribute, keys_case = :underscore)
+			namespace = ''
+			attribute = attribute.to_s.delete('@')
+			unless attribute.index(':').nil?
+				namespace, attribute = attribute.split(':', 2)
+				namespace += ':'
+			end
+
 			if keys_case == :underscore
-				return attribute.to_s.delete("@").underscore
+				return namespace + attribute.underscore
 			elsif keys_case == :camelcase
-				return attribute.to_s.delete("@").camelcase
+				return namespace + attribute.camelcase
 			end
 		end
 
