@@ -45,7 +45,9 @@ module BingAdsApi
 		private
 
 			def set_custom_attributes(attributes)
-				custom_params = attributes[:url_custom_parameters].fetch(:parameters, []).fetch(:custom_parameter, [])
+				custom_params = attributes[:url_custom_parameters].
+					fetch(:parameters, {}).
+					fetch(:custom_parameter, [])
 				custom_params = [custom_params] if custom_params.is_a?(Hash)
 				self.url_custom_parameters = custom_params
 			end
