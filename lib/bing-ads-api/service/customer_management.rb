@@ -62,17 +62,18 @@ module BingAdsApi
 		#
 		# Raises:: exception
 		def get_accounts_info(customer_id=nil, only_parent_accounts=false)
-			response = call(:get_accounts_info, {
-				customer_id: customer_id || self.client_proxy.customer_id,
-				only_parent_accounts: only_parent_accounts.to_s
-			})
+			response = call(:get_accounts_info,
+				{customer_id: customer_id || self.client_proxy.customer_id,
+				only_parent_accounts: only_parent_accounts.to_s})
 			response_hash = get_response_hash(response, __method__)
-			account_info = response_hash[:accounts_info][:account_info]
-			unless account_info.kind_of?(Array)
-				account_info = [account_info]
-			end
-			accounts = account_info.map do |account_hash|
-				BingAdsApi::AccountInfo.new(account_hash)
+			accounts = response_hash[:accounts_info][:account_info]
+			if accounts.is_a?(Array)
+				accounts.map do |account_hash|
+					BingAdsApi::AccountInfo.new(account_hash)
+				end
+			else
+				# when there is only one account api does not return an array but a single object
+				accounts = [BingAdsApi::AccountInfo.new(accounts)]
 			end
 			return accounts
 		end
