@@ -192,6 +192,11 @@ constants:
       value: 'Value'
   # Constansts specific for campaign management services
   campaign_management:
+    url_custom_parameters:
+      parameters:
+        custom_parameter:
+          key: 'Key'
+          value: 'Value'
     budget_limit_type:
       monthly_budget_spend_until_depleted: 'MonthlyBudgetSpendUntilDepleted'
       daily_budget_accelerated: 'DailyBudgetAccelerated'
@@ -586,6 +591,19 @@ constants:
 
 # All data object attribute orderings are here
 orders:
+  customer_management:
+    account:
+      - account_type
+      - currency_type
+      - country_code
+      - id
+      - forward_compatibility_map
+      - name
+      - number
+      - parent_customer_id
+      - account_life_cycle_status
+      - time_stamp
+      - time_zone
   customer_billing:
     predicate:
       - field
@@ -643,6 +661,7 @@ orders:
       - status
       - time_zone
       - campaign_type
+      - url_custom_parameters
     keyword:
       - bid
       - destination_url

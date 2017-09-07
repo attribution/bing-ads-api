@@ -145,9 +145,9 @@ module BingAdsApi
 		# Returns:: Array of BingAdsApi::Campaign
 		#
 		# Raises:: exception
-		def get_campaigns_by_account_id(account_id)
+		def get_campaigns_by_account_id(account_id, campaign_type='SearchAndContent')
 			response = call(:get_campaigns_by_account_id,
-				{account_id: account_id})
+				{account_id: account_id, campaign_type: campaign_type})
 			response_hash = get_response_hash(response, __method__)
 			response_campaigns = [response_hash[:campaigns][:campaign]].flatten.compact
 			campaigns = response_campaigns.map do |camp_hash|
