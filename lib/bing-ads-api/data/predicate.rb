@@ -2,14 +2,15 @@
 
 module BingAdsApi
 
-	class Predicate < BingAdsApi::DataObject
+    class Predicate < BingAdsApi::DataObject
 
-		attr_accessor :field, :operator, :value
+        attr_accessor :field, :operator, :value
 
-    def to_hash(keys = :underscore)
-			hash = super(keys)
-			return hash
-		end
+        def to_hash(keys = :underscore)
+          hash = super(keys)
+          hash = hash.map{ |k,v| ["ins1:#{k}", v] }.to_h
+          return hash
+        end
 
   private
 

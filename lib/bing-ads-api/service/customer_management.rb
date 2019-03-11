@@ -40,9 +40,9 @@ module BingAdsApi
 		end
 
 
-		#########################
-		## Operations Wrappers ##
-		#########################
+        #########################
+        ## Operations Wrappers ##
+        #########################
 
 		# Public : Gets a list of objects that contains account identification information,
 		# for example the name and identifier of the account, for the specified customer.

@@ -92,10 +92,28 @@ module BingAdsApi
 		end
 
 
-		private
-			def get_service_name
-				"reporting"
-			end
+        # Public : Get the status of a report request
+        #
+        # Author:: jlopezn@neonline.cl
+        #
+        # === Parameters
+        # +report_request_id+ - Identifier of the report request
+        #
+        # === Examples
+        #   service.poll_generate_report("12345")
+        #   # => Hash
+        #
+        # Returns:: Hash with the PollGenerateReportResponse structure
+        #
+        # Raises:: exception
+        def poll_generate_report(report_request_id)
+            response = call(:poll_generate_report,
+                {report_request_id: report_request_id} )
+            response_hash = get_response_hash(response, __method__)
+            report_request_status = BingAdsApi::ReportRequestStatus.new(
+                response_hash[:report_request_status])
+            return report_request_status
+        end
 
 	end
 end

@@ -88,8 +88,8 @@ describe BingAdsApi::Reporting do
       :max_rows => 10,
       :scope => {
         :account_ids => default_options[:account_id],
-				:campaigns => []
-			},
+                :campaigns => []
+            },
       # predefined date
       :time => :this_week
 		)
