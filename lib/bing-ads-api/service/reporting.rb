@@ -115,5 +115,11 @@ module BingAdsApi
             return report_request_status
         end
 
+			private
+
+			def get_service_name
+				"reporting"
+			end
+
 	end
 end
